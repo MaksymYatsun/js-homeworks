@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="main.js" defer></script>
+  <title>JS homework 1</title>
+</head>
+
+<body>
+  <main>
+    <button>Do not hover on me</button>
+    <style>
+      body {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      button {
+        background-color: cadetblue;
+        border-radius: 15px;
+        border: none;
+        padding: 20px;
+        font-weight: 800;
+        font-size: 24px;
+        transition: all 0.3s ease-in-out;
+        position: relative;
+      }
+
+      button::before {
+        content: '';
+        display: block;
+        position: absolute;
+        opacity: 0;
+        left: -150%;
+        top: -250%;
+        width: 50vw;
+        height: 50vh;
+      }
+
+      button:hover {
+        background-color: brown;
+        color: red;
+        margin-top: 100px;
+        margin-right: 100px;
+        transform: rotate(360deg) translateY(-100%) translateX(100%) scale(150%);
+        transition: all 0.3s ease-in-out;
+      }
+    </style>
+  </main>
+</body>
+
+</html>

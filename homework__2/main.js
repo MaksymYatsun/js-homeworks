@@ -6,9 +6,9 @@ const input = prompt("1)Enter text", "");
 const inputUpper = input.toUpperCase();
 
 if (input === inputUpper) {
-  console.log("1)String entered with only uppercase leters");
+  console.log("1)String entered with only uppercase letters");
 } else {
-  console.log("1)String entered with lovercase letters;");
+  console.log("1)String entered with lowercase letters;");
 }
 
 //2)Ask a user to enter their email and console.log whether their email provider is gmail

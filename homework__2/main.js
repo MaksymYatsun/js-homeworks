@@ -14,8 +14,9 @@ if (input === inputUpper) {
 //2)Ask a user to enter their email and console.log whether their email provider is gmail
 
 const inputMail = prompt("2)Enter email", "");
+const inputMailSubstring = inputMail.substring(inputMail.length - 10, inputMail.length);
 
-if (inputMail.includes("gmail.com")) {
+if (inputMailSubstring === "@gmail.com") {
   console.log("2)Your email provider is Gmail.");
 } else {
   console.log("2)Your email provider is not Gmail");
@@ -24,23 +25,28 @@ if (inputMail.includes("gmail.com")) {
 //3)Ask a user to enter their Ukrainian phone number and console.log the name of the mobile service they are using (Kyivstar/vodafone/lifecell)
 
 const phone = prompt("3)Enter your phone including your country code!", "+38");
-const kyivstar = phone.includes("039", 3) || phone.includes("096", 3) || phone.includes("097", 3) || phone.includes("098", 3) || phone.includes("067", 3);
-const vodafone = phone.includes("050", 3) || phone.includes("066", 3) || phone.includes("095", 3) || phone.includes("099", 3);
-const lifecell = phone.includes("063", 3) || phone.includes("073", 3) || phone.includes("093", 3);
+const phoneCode = phone.substring(3, 6);
+const kyivstar = phoneCode === "039" || phoneCode === "096" || phoneCode === "097" || phoneCode === "098" || phoneCode === "067";
+const vodafone = phoneCode === "050" || phoneCode === "066" || phoneCode === "095" || phoneCode === "099";
+const lifecell = phoneCode === "063" || phoneCode === "073" || phoneCode === "093";
 
-if (phone.includes("+380")) {
-  if (kyivstar === true) {
-    console.log("3)You using Kyivstar");
-  } else if (vodafone === true) {
-    console.log("3)You using Vodafone");
-  } else if (lifecell === true) {
-    console.log("3)You using Lifecell");
+function checkMobileService() {
+  if (phone.includes("+380")) {
+    if (kyivstar) {
+      return "Kyivstar";
+    } else if (vodafone) {
+      return "Vodafone";
+    } else if (lifecell) {
+      return "Lifecell";
+    } else {
+      return "unrecognized";
+    }
   } else {
-    console.log("3)You using unrecognized mobile service");
+    return "unreachable, specify your country code";
   }
-} else {
-  console.log("3)You forgot to specify your country code");
 }
+
+console.log("3)Your mobile service is", checkMobileService())
 
 //4)Transform the following string "[html, body, header, div, img]" into this "html->body->header->div->img" (I left the quotes here to identify that it's a string)
 
@@ -50,34 +56,44 @@ const index = modifiedSyntax.length - 2;
 
 console.log(modifiedSyntax.substr(1, index));
 
-//5)You have the following string "Kate, Steve, Jack, Bob, John"  , ask a user to enter any name and check if this string contains this name. If it doesn't, just let the user know via console.log. If it does, remove all names before this name and console.log the result:
+//5)You have the following string "Kate, Steve, Jack, Bob, John", ask a user to enter any name and check if this string contains this name. If it doesn't, just let the user know via console.log. If it does, remove all names before this name and console.log the result:
 
 const names = "Kate, Steve, Jack, Bob, John";
 const userName = prompt("5)Enter random name or chose one of the list (Kate, Steve, Jack, Bob, John)", "");
 
 if (names.includes(userName)) {
-  console.log("5)", names.substring(names.indexOf(userName) + 0));
+  console.log("5)", names.substring(names.indexOf(userName)));
 } else {
   console.log("5)Name is not in the list");
 }
 
 //6)Mini-calculator game. Ask a user to enter 2 numbers and a sign (+ /-///*). Then perform the selected math operation on these numbers and console.log the result.
 
-const num1 = +prompt("6)Enter first num", "");
-const num2 = +prompt("6)Enter second number", "");
-const operator = prompt("6)Enter math operator", "");
-let result;
 
-if (operator === "+") {
-  result = num1 + num2;
-} else if (operator === "-") {
-  result = num1 - num2;
-} else if (operator === "/") {
-  result = num1 / num2;
-} else if (operator === "*") {
-  result = num1 * num2;
-} else {
-  console.log("6)Something went wrong");
+let num1 = Number(prompt("6)Enter first number"));
+let num2 = Number(prompt("6)Enter second number"));
+const operator = prompt("6)Enter math operator", "");
+
+function calculator() {
+  if ((isNaN(num1) === false) && (isNaN(num2) === false)) {
+    if (operator == "+" || operator == "-" || operator == "/" || operator == "*") {
+      if (operator === "+") {
+        return num1 + num2;
+      } else if (operator === "-") {
+        return num1 - num2;
+      } else if (operator === "/") {
+        return num1 / num2;
+      } else if (operator === "*") {
+        return num1 * num2;
+      } else {
+        return "unreachable, try different operator";
+      }
+    } else {
+      return "unreachable, try different operator";
+    }
+  } else {
+    return "unreachable, must be numbers as inputs";
+  }
 }
 
-console.log("6)Your result", result);
+console.log("6)Result is", calculator());

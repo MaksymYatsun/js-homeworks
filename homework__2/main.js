@@ -30,23 +30,19 @@ const kyivstar = phoneCode === "039" || phoneCode === "096" || phoneCode === "09
 const vodafone = phoneCode === "050" || phoneCode === "066" || phoneCode === "095" || phoneCode === "099";
 const lifecell = phoneCode === "063" || phoneCode === "073" || phoneCode === "093";
 
-function checkMobileService() {
-  if (phone.includes("+380")) {
-    if (kyivstar) {
-      return "Kyivstar";
-    } else if (vodafone) {
-      return "Vodafone";
-    } else if (lifecell) {
-      return "Lifecell";
-    } else {
-      return "unrecognized";
-    }
+if (phone.includes("+380")) {
+  if (kyivstar) {
+    console.log("3)You operator is Kyivstar");
+  } else if (vodafone) {
+    console.log("3)You operator is Vodafone");
+  } else if (lifecell) {
+    console.log("3)You operator is Lifecell");
   } else {
-    return "unreachable, specify your country code";
+    console.log("3)Unknown operator");
   }
+} else {
+  console.log("3)Please specify your county code")
 }
-
-console.log("3)Your mobile service is", checkMobileService())
 
 //4)Transform the following string "[html, body, header, div, img]" into this "html->body->header->div->img" (I left the quotes here to identify that it's a string)
 
@@ -69,31 +65,29 @@ if (names.includes(userName)) {
 
 //6)Mini-calculator game. Ask a user to enter 2 numbers and a sign (+ /-///*). Then perform the selected math operation on these numbers and console.log the result.
 
-
-let num1 = Number(prompt("6)Enter first number"));
-let num2 = Number(prompt("6)Enter second number"));
+const num1 = Number(prompt("6)Enter first number"));
+const num2 = Number(prompt("6)Enter second number"));
 const operator = prompt("6)Enter math operator", "");
+let result;
 
-function calculator() {
-  if ((isNaN(num1) === false) && (isNaN(num2) === false)) {
-    if (operator == "+" || operator == "-" || operator == "/" || operator == "*") {
-      if (operator === "+") {
-        return num1 + num2;
-      } else if (operator === "-") {
-        return num1 - num2;
-      } else if (operator === "/") {
-        return num1 / num2;
-      } else if (operator === "*") {
-        return num1 * num2;
-      } else {
-        return "unreachable, try different operator";
-      }
+if (!isNaN(num1) && !isNaN(num2)) {
+  if (operator == "+" || operator == "-" || operator == "/" || operator == "*") {
+    if (operator === "+") {
+      result = num1 + num2;
+    } else if (operator === "-") {
+      result = num1 - num2;
+    } else if (operator === "/") {
+      result = num1 / num2;
+    } else if (operator === "*") {
+      result = num1 * num2;
     } else {
-      return "unreachable, try different operator";
+      console.log("6)Try another operator")
     }
   } else {
-    return "unreachable, must be numbers as inputs";
+    console.log("6)Try another operator");
   }
+} else {
+  console.log("6)Must be numbers")
 }
 
-console.log("6)Result is", calculator());
+console.log("6)Result is", result);

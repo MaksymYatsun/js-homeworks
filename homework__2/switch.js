@@ -15,4 +15,4 @@ switch (phoneCode) {
     break;
   default:
     console.log("3)You using undefined operator");
-}
+};

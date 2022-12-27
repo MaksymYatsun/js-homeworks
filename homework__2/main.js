@@ -9,18 +9,17 @@ if (input === inputUpper) {
   console.log("1)String entered with only uppercase letters");
 } else {
   console.log("1)String entered with lowercase letters;");
-}
+};
 
 //2)Ask a user to enter their email and console.log whether their email provider is gmail
 
 const inputMail = prompt("2)Enter email", "");
-const inputMailSubstring = inputMail.substring(inputMail.length - 10, inputMail.length);
 
-if (inputMailSubstring === "@gmail.com") {
+if (inputMail.endsWith("@gmail.com")) {
   console.log("2)Your email provider is Gmail.");
 } else {
   console.log("2)Your email provider is not Gmail");
-}
+};
 
 //3)Ask a user to enter their Ukrainian phone number and console.log the name of the mobile service they are using (Kyivstar/vodafone/lifecell)
 
@@ -42,7 +41,7 @@ if (phone.includes("+380")) {
   }
 } else {
   console.log("3)Please specify your county code")
-}
+};
 
 //4)Transform the following string "[html, body, header, div, img]" into this "html->body->header->div->img" (I left the quotes here to identify that it's a string)
 
@@ -61,7 +60,7 @@ if (names.includes(userName)) {
   console.log("5)", names.substring(names.indexOf(userName)));
 } else {
   console.log("5)Name is not in the list");
-}
+};
 
 //6)Mini-calculator game. Ask a user to enter 2 numbers and a sign (+ /-///*). Then perform the selected math operation on these numbers and console.log the result.
 
@@ -88,6 +87,6 @@ if (!isNaN(num1) && !isNaN(num2)) {
   }
 } else {
   console.log("6)Must be numbers")
-}
+};
 
 console.log("6)Result is", result);

@@ -1,17 +1,17 @@
 'use strict'
 
 const nums = '025468182';
-const arrTmp = [];
+const tmpArr = [];
 
 for (let i = 0; i < nums.length; i++) {
   if ((nums[i] % 2 === 0) && (nums[i - 1] % 2 === 0)) {
-    arrTmp.push('-', nums[i])
+    tmpArr.push('-', nums[i])
   } else {
-    arrTmp.push(nums[i])
+    tmpArr.push(nums[i])
   }
 }
 
-const numsWithHyphens = arrTmp.join('')
+const numsWithHyphens = tmpArr.join('')
 
 console.log(numsWithHyphens)
 

@@ -1,8 +1,7 @@
 'use strict'
 
 const str = 'Check-this-awesome-sentence';
-const transformedStr = str.replace(/-/g, ', '); //replaceAll throwing an error in node(works fine in browser)
-const arr = transformedStr.split(', ');
+const arr = str.split('-');
 const arrReversed = arr.reverse();
 const strReversed = arr.join('-');
 

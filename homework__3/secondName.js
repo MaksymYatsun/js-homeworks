@@ -3,13 +3,12 @@
 const str = 'Kevin, Steve, Jake, Bill, Paul, Susan, Ann'
 const arr = str.split(', ');
 const arrTmp = [];
-let strEverySecond = '';
 
-for (let i = 0; i < arr.length; i = i + 2) {
+for (let i = 0; i < arr.length; i += 2) {
   arrTmp.push(arr[i]);
 }
 
-strEverySecond = arrTmp.join(', ');
+const strEverySecond = arrTmp.join(', ');
 
 console.log(strEverySecond);
 

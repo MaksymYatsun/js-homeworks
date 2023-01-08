@@ -1,12 +1,11 @@
 'use strict'
 
-const nums = [801, 555, 31, 4, 738, 145, 473, 1000];
-let biggestNum;
+const nums = [801, 555, 31, 4, 738, 145, 1000, 473];
+let biggestNum = nums[0];
 
 for (let i = 0; i < nums.length; i++) {
-  biggestNum = nums[i];
-  if (nums[i] > (nums[i + 1])) {
-    biggestNum = nums[i + 1]
+  if (biggestNum < (nums[i])) {
+    biggestNum = nums[i]
   }
 }
 

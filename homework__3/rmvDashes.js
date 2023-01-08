@@ -1,14 +1,7 @@
 'use strict'
 
 const str = 'Hello - new - world - hey';
-const arr = str.split('-');
-const arrTmp = [];
-
-for (let i = 0; i < arr.length; i++) {
-  arrTmp.push(arr[i].trim());
-}
-
-const strTrimmed = arrTmp.join(' ')
+const strTrimmed = str.replaceAll(' - ', '-')
 
 console.log(strTrimmed)
 

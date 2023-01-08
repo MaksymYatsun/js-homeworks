@@ -5,21 +5,16 @@ let result = 0;
 let input;
 
 while (input !== 'stop') {
-  input = prompt('Enter a number, to sum enter a stop');
+  input = prompt("Input");
   input = input.toLowerCase();
-  if ((input !== 'stop')) {
-    arr.push(parseInt(input))
+  if (input !== 'stop') {
+    result += parseInt(input);
+  } else if (isNaN(result)) {
+    console.log("You can add only numbers");
   } else {
-    for (i = 0; i < arr.length; i++) {
-      result = result + arr[i];
-    }
-    if (isNaN(result)) {
-      console.log('Your input was containing not a numeric value')
-    } else {
-      console.log(result)
-    }
-  };
-};
+    console.log(result)
+  }
+}
 
 /* 
 Write a program that will constantly ask user to enter a number (via prompt) and when the user enters stop instead of a number, alert the sum of all numbers they entered.

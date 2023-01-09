@@ -1,3 +1,5 @@
+'use strict'
+
 let num = 1428;
 let reversed = 0;
 

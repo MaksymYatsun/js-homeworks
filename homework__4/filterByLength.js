@@ -1,7 +1,9 @@
+'use strict'
+
 function filterByLength(arr, strLength = 5) {
   const result = [];
 
-  for (i = 0; i < arr.length; i++) {
+  for (let i = 0; i < arr.length; i++) {
     if (arr[i].length <= strLength) {
       result.push(arr[i])
     }

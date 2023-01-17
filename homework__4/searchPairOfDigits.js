@@ -1,15 +1,13 @@
+'use strict'
+
 function searchPairOfDigits(arr, value) {
-
-  for (i = 0; i < arr.length; i++) {
-
-    for (j = (i + 1); j < arr.length; j++) {
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = (i + 1); j < arr.length; j++) {
       if (arr[i] + arr[j] === value) {
-
         return true;
       }
     }
   }
-
   return false;
 }
 

@@ -1,7 +1,9 @@
+'use strict'
+
 function filterByDomain(arr, domain) {
   const result = [];
 
-  for (i = 0; i < arr.length; i++) {
+  for (let i = 0; i < arr.length; i++) {
     if (arr[i].endsWith(domain)) {
       result.push(arr[i])
     }

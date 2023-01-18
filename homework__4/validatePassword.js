@@ -1,15 +1,5 @@
 'use strict'
 
-function includesSymbols(password) {
-  for (let i = 0; i < password.length; i++) {
-    if (password.charCodeAt(i) === (33 || 35 || 37 || 63)) {
-      return true;
-    }
-  }
-
-  return false;
-}
-
 function includesNumbers(password) {
   for (let i = 0; i < password.length; i++) {
     if (password.charCodeAt(i) >= 48 && password.charCodeAt(i) <= 57) {
@@ -21,6 +11,16 @@ function includesNumbers(password) {
 }
 
 function validatePassword(password) {
+  const forbiddenChars = ['%', '?', '!', '*', '#'];
+
+  for (let i = 0; i < password.length; i++) {
+    const char = password[i];
+
+    if (forbiddenChars.includes(char)) {
+      return false;
+    }
+  }
+
   if (password.length < 8 || password.length > 30) {
     return false;
   }
@@ -28,7 +28,7 @@ function validatePassword(password) {
     return false;
   }
 
-  return includesNumbers(password) && !includesSymbols(password);
+  return includesNumbers(password);
 }
 
 console.log(validatePassword('Str0ngpassw0rd'));

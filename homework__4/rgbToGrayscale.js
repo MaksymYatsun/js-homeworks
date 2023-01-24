@@ -4,9 +4,9 @@ function rgbToGrayscale(rgbArr) {
   const grayscaleArr = [];
 
   for (let i = 0; i < rgbArr.length; i++) {
-    let r = rgbArr[i][0] * 0.3;
-    let g = rgbArr[i][1] * 0.59;
-    let b = rgbArr[i][2] * 0.11;
+    const r = rgbArr[i][0] * 0.3;
+    const g = rgbArr[i][1] * 0.59;
+    const b = rgbArr[i][2] * 0.11;
     grayscaleArr.push(Math.round(r + g + b));
   }
 

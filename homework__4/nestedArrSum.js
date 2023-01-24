@@ -4,10 +4,12 @@ function nestedArrSum(arr) {
   let result = 0;
 
   for (let i = 0; i < arr.length; i++) {
+    if (Array.isArray(arr[i])) {
+      result += nestedArrSum(arr[i])
+    }
     if (typeof arr[i] === 'number') {
       result += arr[i];
     }
-    result += nestedArrSum(arr[i]);
   }
 
   return result;

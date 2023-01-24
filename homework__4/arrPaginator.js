@@ -2,9 +2,17 @@
 
 function arrPaginator(arr, value) {
   const paginatedArr = [];
+  let tmpArr = [];
 
-  for (let i = 0; i < arr.length; i += value) {
-    paginatedArr.push(arr.slice(i, value + i));
+  for (let i = 0; i < arr.length; i++) {
+    if (tmpArr.length < value) {
+      tmpArr.push(arr[i])
+    }
+
+    if (tmpArr.length === value) {
+      paginatedArr.push(tmpArr)
+      tmpArr = [];
+    }
   }
 
   return paginatedArr;

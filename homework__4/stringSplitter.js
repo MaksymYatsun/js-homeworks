@@ -5,16 +5,12 @@ function stringSplitter(str, delimiter = '') {
   let tmpStr = '';
   let isDelimiter = false;
 
-  if (delimiter.length === 0) {
-
-    for (let i = 0; i < str.length; i++) {
+  for (let i = 0; i < str.length; i++) {
+    if (delimiter.length === 0) {
       arr.push(str[i]);
+      continue;
     }
 
-    return arr;
-  }
-
-  for (let i = 0; i < str.length; i++) {
     if (str[i] === delimiter[0]) {
 
       for (let j = 0; j < delimiter.length; j++) {
@@ -39,7 +35,8 @@ function stringSplitter(str, delimiter = '') {
       i += delimiter.length - 1;
     }
   }
-  arr.push(tmpStr);
+
+  if (tmpStr) arr.push(tmpStr);
 
   return arr;
 }

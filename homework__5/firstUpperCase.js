@@ -1,18 +1,10 @@
-let index = 0;
-function firstUpperCase(str) {
-  if (str[index] === str[index].toLowerCase()) {
-    if (index < str.length - 1) {
-      index++;
-
-      return firstUpperCase(str);
-    }
-
+function firstUpperCase(str, i = 0) {
+  if (i === str.length) {
     return;
   }
-  let resultIndex = index;
-  index = 0;
+  if (str[i] === str[i].toUpperCase()) return str[i];
 
-  return str[resultIndex];
+  return firstUpperCase(str, i + 1);
 }
 
 

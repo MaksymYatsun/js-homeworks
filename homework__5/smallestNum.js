@@ -1,26 +1,17 @@
-let index = 0;
-let smallestNum = Number.MAX_VALUE;
+function min(arr, n = arr.length, result = arr[0]) {
+  n--;
 
-function min(arr) {
-  if (index < arr.length - 1) {
-    if (arr[index] < smallestNum) {
-      smallestNum = arr[index];
-      index++;
-
-      return min(arr);
-    }
-    index++;
-
-    return min(arr);
+  if (arr[n] < result) {
+    result = arr[n];
   }
 
-  let result = smallestNum;
-  index = 0;
-  smallestNum = Number.MAX_VALUE;
+  if (n > 0) {
+    return min(arr, n, result)
+  }
 
   return result;
 }
 
-console.log(min([55, 19, 84, 1, 17, 29, 7])); // 1
+console.log(min([2, 55, 19, 84, 15, 17, 29, 7])); // 1
 
 //3. Given an array of numbers, return the smallest number.

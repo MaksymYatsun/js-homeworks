@@ -1,26 +1,11 @@
-let tmpStr = '';
-let index = 0;
+function removeAdjacentCharacters(str, result = '', i = 0) {
+  if (i < str.length - 1) {
+    if (str[i] !== str[i + 1]) result += str[i];
 
-function removeAdjacentCharacters(str) {
-  if (index < str.length - 1) {
-    if (str[index] !== str[index + 1]) {
-      tmpStr += str[index];
-      index++;
-
-      return removeAdjacentCharacters(str);
-    }
-    index++;
-
-    return removeAdjacentCharacters(str);
+    return removeAdjacentCharacters(str, result, i + 1);
   }
-  tmpStr += str[index];
 
-  let result = tmpStr;
-
-  tmpStr = '';
-  index = 0;
-
-  return result;
+  return result += str[i];
 }
 
 console.log(removeAdjacentCharacters('AABBBCDDD')) // 'ABCD';

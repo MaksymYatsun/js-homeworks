@@ -1,5 +1,6 @@
 function intervalSum(num) {
   if (num > 0) return num + intervalSum(num - 1);
+
   return num;
 }
 

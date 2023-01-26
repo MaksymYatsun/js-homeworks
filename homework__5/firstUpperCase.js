@@ -1,7 +1,5 @@
 function firstUpperCase(str, i = 0) {
-  if (i === str.length) {
-    return;
-  }
+  if (i === str.length) return;
   if (str[i] === str[i].toUpperCase()) return str[i];
 
   return firstUpperCase(str, i + 1);

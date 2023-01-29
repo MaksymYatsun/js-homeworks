@@ -1,11 +1,9 @@
 function removeAdjacentCharacters(str, result = '', i = 0) {
-  if (i < str.length - 1) {
-    if (str[i] !== str[i + 1]) result += str[i];
+  if (i === str.length - 1) return result += str[i];
 
-    return removeAdjacentCharacters(str, result, i + 1);
-  }
+  if (str[i] !== str[i + 1]) result += str[i];
 
-  return result += str[i];
+  return removeAdjacentCharacters(str, result, i + 1);
 }
 
 console.log(removeAdjacentCharacters('AABBBCDDD')) // 'ABCD';

@@ -1,3 +1,5 @@
+'use strict'
+
 function min(arr, i = 0) {
   if (i === arr.length - 1) {
     return arr[i];

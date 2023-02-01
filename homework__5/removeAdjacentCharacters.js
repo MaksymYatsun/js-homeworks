@@ -1,9 +1,13 @@
 'use strict'
 
 function removeAdjacentCharacters(str, result = '', i = 0) {
-  if (i === str.length - 1) return result += str[i];
+  if (i === str.length - 1) {
+    return result + str[i];
+  }
 
-  if (str[i] !== str[i + 1]) result += str[i];
+  if (str[i] !== str[i + 1]) {
+    result += str[i];
+  }
 
   return removeAdjacentCharacters(str, result, i + 1);
 }

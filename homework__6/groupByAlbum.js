@@ -1,16 +1,16 @@
-function groupByAlbum(obj) {
+function groupByAlbum(arr) {
   const result = [];
 
-  for (let key of obj) {
-    if (!result[key.album?.title]) {
-      if (key.album !== null) {
-        result[key.album?.title] = [];
-      }
+  for (const song of arr) {
+    if (!song.album) {
+      continue;
     }
 
-    if (key.album !== null) {
-      result[key.album?.title].push(key);
+    if (!result[song.album.title]) {
+      result[song.album.title] = [];
     }
+
+    result[song.album.title].push(song);
   }
 
   return result;

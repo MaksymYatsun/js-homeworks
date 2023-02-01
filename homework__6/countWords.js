@@ -4,7 +4,13 @@ function countWords(str) {
 
   for (const word of wordsArr) {
     if (word.length > 0) {
-      wordsObj[word] = wordsObj[word] ? wordsObj[word] + 1 : 1;
+      if (wordsObj[word]) {
+        wordsObj[word] += 1;
+      }
+
+      if (!wordsObj[word]) {
+        wordsObj[word] = 1;
+      }
     }
   }
 

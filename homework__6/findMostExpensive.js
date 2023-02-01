@@ -2,7 +2,9 @@ function findMostExpensive(arr) {
   let result = arr[0];
 
   for (const obj of arr) {
-    if (obj.price > result.price) result = obj;
+    if (obj.price > result.price) {
+      result = obj;
+    }
   }
 
   return result;

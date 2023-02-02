@@ -1,8 +1,22 @@
-function hideProps(obj, arr) {
-  const result = Object.assign({}, obj);
+'use strict'
 
-  for (const key of arr) {
-    delete result[key];
+function hideProps(obj, arr) {
+  const result = {};
+
+  for (const prop in obj) {
+    let listed = false;
+
+    for (const value of arr) {
+      if (value === prop) {
+        listed = true;
+      }
+    }
+
+    if (listed) {
+      continue;
+    }
+
+    result[prop] = obj[prop];
   }
 
   return result;

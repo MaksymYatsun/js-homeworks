@@ -1,9 +1,5 @@
 function hideProps(obj, arr) {
-  const result = {};
-
-  for (const key in obj) {
-    result[key] = obj[key];
-  }
+  const result = Object.assign({}, obj);
 
   for (const key of arr) {
     delete result[key];

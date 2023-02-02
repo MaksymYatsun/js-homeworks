@@ -4,18 +4,9 @@ function hideProps(obj, arr) {
   const result = {};
 
   for (const prop in obj) {
-    let listed = false;
-
-    for (const value of arr) {
-      if (value === prop) {
-        listed = true;
-      }
-    }
-
-    if (listed) {
+    if (arr.includes(prop)) {
       continue;
     }
-
     result[prop] = obj[prop];
   }
 

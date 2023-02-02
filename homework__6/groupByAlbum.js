@@ -6,7 +6,7 @@ function groupByAlbum(arr) {
       continue;
     }
 
-    if (!result[song.album.title]) {
+    if (song.album.title in result === false) {
       result[song.album.title] = [];
     }
 

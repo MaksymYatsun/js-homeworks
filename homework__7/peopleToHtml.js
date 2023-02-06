@@ -1,12 +1,6 @@
-function toTemplate(person) {
-  return `<div>
-            <h2>${person.name}</h2>
-            <p>Country: ${person.country}</p>
-            <p>Age: ${person.age}</p>
-          </div>`
-}
+'use strict'
 
-console.log([
+const peoples = [
   {
     id: 1,
     name: 'Kate',
@@ -37,4 +31,17 @@ console.log([
     age: 31,
     country: 'United Kingdom'
   }
-].map(toTemplate));
+];
+
+function peopleToHtml(arr) {
+  return arr.map(function (person) {
+    const template = `<div>
+                        <h2>${person.name}</h2>
+                        <p>Country:${person.country}</p>
+                        <p>Age: ${person.age}</p>
+                      </div>`
+    return template;
+  });
+}
+
+console.log(peopleToHtml(peoples));

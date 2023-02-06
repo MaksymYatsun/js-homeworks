@@ -1,8 +1,6 @@
-function sumPrice(result, currentItem) {
-  return result + currentItem.price;
-};
+'use strict'
 
-console.log([
+const items = [
   {
     id: 1,
     title: 'iPhone 14',
@@ -33,6 +31,14 @@ console.log([
     title: 'Mac Mini',
     price: 950,
   },
-].reduce(sumPrice, 0));
+];
+
+function sumPrice(arr) {
+  return arr.reduce(function (previous, current) {
+    return previous + current.price;
+  }, 0);
+}
+
+console.log(sumPrice(items));
 
 // 1. Given an array of items, calculate the total price of all items.

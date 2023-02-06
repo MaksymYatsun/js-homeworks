@@ -1,8 +1,6 @@
-function removeAdults(person) {
-  return person.age <= 18;
-}
+'use strict'
 
-console.log([
+const peoples = [
   {
     id: 1,
     name: 'Kate',
@@ -28,6 +26,15 @@ console.log([
     name: 'Stephen',
     age: 31
   }
-].filter(removeAdults));
+]
+
+function removeAdults(arr) {
+  return arr.filter(function (person) {
+    return person.age < 18;
+  })
+}
+
+console.log(removeAdults(peoples))
+
 
 // 3. Given an array people, get rid of all adults (>= 18 yrs old).

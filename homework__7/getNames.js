@@ -1,8 +1,6 @@
-function getNames(person) {
-  return person.name;
-}
+'use strict'
 
-console.log([
+const peoples = [
   {
     id: 1,
     name: 'Kate',
@@ -28,4 +26,12 @@ console.log([
     name: 'Stephen',
     age: 31
   }
-].map(getNames).join(', '));
+];
+
+function getNames(arr) {
+  return arr.map(function (person) {
+    return person.name;
+  }).join(', ');
+}
+
+console.log(getNames(peoples));

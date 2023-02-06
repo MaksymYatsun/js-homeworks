@@ -1,7 +1,13 @@
-function isNotOdd(num) {
-  return num % 2 !== 0;
+'use strict'
+
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8];
+
+function removeOdds(arr) {
+  return arr.filter(function (num) {
+    return num % 2 === 0;
+  });
 }
 
-console.log([1, 2, 3, 4, 5, 6, 7, 8].filter(isNotOdd));
+console.log(removeOdds(numbers));
 
 // 2.  Given an array of numbers, get rid of all odd numbers.

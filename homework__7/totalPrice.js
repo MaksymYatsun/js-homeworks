@@ -33,12 +33,12 @@ const items = [
   },
 ];
 
-function sumPrice(arr) {
+function totalPrice(arr) {
   return arr.reduce(function (previous, current) {
     return previous + current.price;
   }, 0);
 }
 
-console.log(sumPrice(items));
+console.log(totalPrice(items));
 
 // 1. Given an array of items, calculate the total price of all items.

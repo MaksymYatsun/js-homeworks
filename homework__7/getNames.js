@@ -31,7 +31,7 @@ const people = [
 function getNames(arr) {
   function addNameToString(previous, current) {
     if (previous === '') {
-      return `${current.name}`;
+      return current.name;
     }
 
     return `${previous}, ${current.name}`;

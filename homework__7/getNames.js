@@ -1,6 +1,6 @@
 'use strict'
 
-const peoples = [
+const people = [
   {
     id: 1,
     name: 'Kate',
@@ -29,9 +29,15 @@ const peoples = [
 ];
 
 function getNames(arr) {
-  return arr.map(function (person) {
-    return person.name;
-  }).join(', ');
+  function addNameToString(previous, current) {
+    if (previous === '') {
+      return previous + current.name;
+    }
+
+    return previous + ', ' + current.name;
+  }
+
+  return arr.reduce(addNameToString, '');
 }
 
-console.log(getNames(peoples));
+console.log(getNames(people));

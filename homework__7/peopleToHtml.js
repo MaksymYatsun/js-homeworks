@@ -1,6 +1,6 @@
 'use strict'
 
-const peoples = [
+const people = [
   {
     id: 1,
     name: 'Kate',
@@ -34,14 +34,15 @@ const peoples = [
 ];
 
 function peopleToHtml(arr) {
-  return arr.map(function (person) {
-    const template = `<div>
-                        <h2>${person.name}</h2>
-                        <p>Country:${person.country}</p>
-                        <p>Age: ${person.age}</p>
-                      </div>`
-    return template;
-  });
-}
+  function toTemplate(person) {
+    return `<div>
+              <h2>${person.name}</h2>
+              <p>Country:${person.country}</p>
+              <p>Age: ${person.age}</p>
+            </div>`
+  }
 
-console.log(peopleToHtml(peoples));
+  return arr.map(toTemplate)
+};
+
+console.log(peopleToHtml(people));

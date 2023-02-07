@@ -33,7 +33,7 @@ const people = [
   }
 ];
 
-function toHtmlTemplate(person) {
+function personToHTML(person) {
   return `<div>
             <h2>${person.name}</h2>
             <p>Country:${person.country}</p>
@@ -41,6 +41,8 @@ function toHtmlTemplate(person) {
           </div>`;
 }
 
-const peopleToHtml = people.map(toHtmlTemplate);
+function peopleToHTML(people) {
+  return people.map(personToHTML);
+}
 
-console.log(peopleToHtml);
+console.log(peopleToHTML(people));

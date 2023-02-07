@@ -33,16 +33,14 @@ const people = [
   }
 ];
 
-function peopleToHtml(arr) {
-  function toTemplate(person) {
-    return `<div>
-              <h2>${person.name}</h2>
-              <p>Country:${person.country}</p>
-              <p>Age: ${person.age}</p>
-            </div>`
-  }
+function toHtmlTemplate(person) {
+  return `<div>
+            <h2>${person.name}</h2>
+            <p>Country:${person.country}</p>
+            <p>Age: ${person.age}</p>
+          </div>`;
+}
 
-  return arr.map(toTemplate)
-};
+const peopleToHtml = people.map(toHtmlTemplate);
 
-console.log(peopleToHtml(people));
+console.log(peopleToHtml);

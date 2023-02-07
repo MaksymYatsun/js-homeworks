@@ -1,6 +1,6 @@
 'use strict'
 
-const peoples = [
+const people = [
   {
     id: 1,
     name: 'Kate',
@@ -34,7 +34,7 @@ function removeAdults(arr) {
   })
 }
 
-console.log(removeAdults(peoples))
+console.log(removeAdults(people))
 
 
 // 3. Given an array people, get rid of all adults (>= 18 yrs old).

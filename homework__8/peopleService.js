@@ -2,10 +2,10 @@ function peopleService(people) {
   const { headers, parsed } = parse(people);
 
   function parse(str) {
-    const rows = str.split('\n').slice(1);
-    const headers = str.split('\n').slice(0, 1)[0].split(',');
+    const rows = str.split('\n');
+    const headers = rows[0].split(',');
 
-    const parsed = rows.map(row => {
+    const parsed = rows.slice(1).map(row => {
       const values = row.split(',');
       return headers.reduce((obj, key, index) => {
         obj[key] = values[index];
@@ -16,9 +16,9 @@ function peopleService(people) {
     return { headers, parsed }
   }
 
-  const filter = (settings) => {
+  const filter = (filters) => {
     return parsed.filter(person => {
-      for (const [key, value] of Object.entries(settings)) {
+      for (const [key, value] of Object.entries(filters)) {
         if (person[key] !== value) {
           return false;
         }
@@ -29,20 +29,18 @@ function peopleService(people) {
   }
 
   const sortBy = (key, order) => {
-    if (order !== 'asc' && order !== 'desc') {
-      throw new Error('Unexpected order parameter. Try "asc" or "desc"');
-    }
-
     const sortedArr = [...parsed];
 
     sortedArr.sort((a, b) => {
       if (order === 'asc') {
-        return a[key] > b[key] ? 1 : -1;
+        return a[key] - b[key];
       }
 
       if (order === 'desc') {
-        return a[key] < b[key] ? 1 : -1;
+        return b[key] - a[key];
       }
+
+      throw new Error('Unexpected order parameter. Try "asc" or "desc"');
     });
 
     return sortedArr;
@@ -66,18 +64,17 @@ function peopleService(people) {
   const stringify = () => {
     let str = '| ';
 
-    for (let i = 0; i < headers.length; i++) {
-      str += `${headers[i].toUpperCase()} | `;
+    for (const header of headers) {
+      str += `${header.toUpperCase()} | `;
     }
 
     str += '\n';
 
-    for (let i = 0; i < parsed.length; i++) {
-      const person = parsed[i];
+    for (const person of parsed) {
       str += '| ';
 
-      for (let j = 0; j < headers.length; j++) {
-        str += `${person[headers[j]]} | `;
+      for (const header of headers) {
+        str += `${person[header].toUpperCase()} | `;
       }
 
       str += '\n';
@@ -155,3 +152,5 @@ const filterByAgeAndCity = {
   age: '30',
   city: 'Milan',
 }
+
+console.log(stringify(people))

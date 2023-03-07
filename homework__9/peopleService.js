@@ -43,6 +43,14 @@ function peopleService(people) {
     const signUpDates = parsed.map(person => {
       const registrationYear = person.registeredAt.getFullYear();
 
+      if (registrationYear - currentYear === 0) {
+        return `${person.name} signed up this year`;
+      }
+
+      if ((registrationYear - currentYear) * -1 === 1) {
+        return `${person.name} signed up ${Math.abs(registrationYear - currentYear)} year ago`;
+      }
+
       return `${person.name} signed up ${Math.abs(registrationYear - currentYear)} years ago`;
     });
 

@@ -12,7 +12,7 @@ function peopleService(people) {
 
       return headers.reduce((obj, key, index) => {
         if (key.endsWith('At')) {
-          obj[key] = new Date(values[index] * 1000);
+          obj[key] = new Date(parseInt(values[index]) * 1000);
 
           return obj;
         }
@@ -26,10 +26,10 @@ function peopleService(people) {
   }
 
   const printSignUps = () => {
-    const currentDate = new Date();
+    const currentDate = new Date().getFullYear();
     const signUps = parsed.map(person => {
-      const bornAt = new Date(currentDate - (person.age * (365 * 24 * 60 * 60 * 1000)));
-      const ageAtRegistration = person.registeredAt.getFullYear() - bornAt.getFullYear();
+      const bornAt = new Date(currentDate - person.age);
+      const ageAtRegistration = person.registeredAt.getFullYear() - bornAt;
 
       return `${person.name} was ${ageAtRegistration} years old when they signed up`;
     });
@@ -41,17 +41,17 @@ function peopleService(people) {
     const currentYear = new Date().getFullYear();
 
     const signUpDates = parsed.map(person => {
-      const registrationYear = person.registeredAt.getFullYear();
+      const signedUpAgo = Math.abs(person.registeredAt.getFullYear() - currentYear);
 
-      if (registrationYear - currentYear === 0) {
+      if (signedUpAgo === 0) {
         return `${person.name} signed up this year`;
       }
 
-      if ((registrationYear - currentYear) * -1 === 1) {
-        return `${person.name} signed up ${Math.abs(registrationYear - currentYear)} year ago`;
+      if (signedUpAgo === 1) {
+        return `${person.name} signed up ${signedUpAgo} year ago`;
       }
 
-      return `${person.name} signed up ${Math.abs(registrationYear - currentYear)} years ago`;
+      return `${person.name} signed up ${signedUpAgo} years ago`;
     });
 
     return signUpDates.join('\n');
@@ -60,31 +60,30 @@ function peopleService(people) {
   const printSignUpStats = () => {
     const signUpStats = { bussinesDay: 0, weekend: 0 };
 
-    parsed.map(person => {
+    for (const person of parsed) {
       if (person.registeredAt.getDay() >= 1 && person.registeredAt.getDay() <= 5) {
-        return signUpStats.bussinesDay += 1;
+        signUpStats.bussinesDay += 1;
+        continue;
       }
 
-      return signUpStats.weekend += 1;
-    })
+      signUpStats.weekend += 1;
+    }
 
     return signUpStats;
   }
 
   const printTeenagers = () => {
     const currentYear = new Date().getFullYear();
-    const teenagers = parsed.filter(person => {
-      return person.age < 18;
-    });
+    let result = '';
 
-    const result = teenagers.map(person => {
-      const birthYear = new Date(currentYear - person.age);
-      const yearsUntilAdulthood = 18 - (currentYear - birthYear);
+    for (const person of parsed) {
+      if (person.age < 18) {
+        const yearsUntilAdulthood = 18 - Number(person.age);
+        result += `${person.name} will be 18 in ${currentYear + yearsUntilAdulthood}\n`
+      }
+    }
 
-      return `${person.name} will be 18 in ${currentYear + yearsUntilAdulthood}`;
-    });
-
-    return result.join('\n');
+    return result;
   }
 
   return { printSignUps, printSignUpDates, printSignUpStats, printTeenagers };
